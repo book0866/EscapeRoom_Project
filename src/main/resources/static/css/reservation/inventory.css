@@ -1,0 +1,76 @@
+@charset "UTF-8";
+
+.sign_title {
+	letter-spacing: -0.5px;
+}
+
+.spot_list {
+	display: flex;
+}
+
+.spot_list .form-group {
+	display: flex;
+    flex-direction: row;
+}
+
+.spot_list .form-group a {
+	line-height: 35px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 0 20px;
+    text-decoration: none;
+    color: #000000;
+}
+
+.spot_list .form-group a {
+	
+}
+
+.list-res {
+	text-align: center;
+}
+
+.list-res thead tr th:nth-child(1),
+.list-res tbody tr td:nth-child(1) {
+	width: 7%;
+}
+
+.list-res thead tr th:nth-child(2),
+.list-res tbody tr td:nth-child(2) {
+	width: 8%;
+}
+
+.list-res thead tr th:nth-child(3),
+.list-res tbody tr td:nth-child(3) {
+	width: 35%;
+}
+
+.list-res thead tr th:nth-child(4),
+.list-res tbody tr td:nth-child(4) {
+	width: 10%;
+}
+
+.list-res thead tr th:nth-child(5),
+.list-res tbody tr td:nth-child(5) {
+	width: 10%;
+}
+
+.list-res thead tr th:nth-child(6),
+.list-res tbody tr td:nth-child(6) {
+	width: 10%;
+}
+
+.list-res thead tr th:nth-child(6),
+.list-res tbody tr td:nth-child(6) {
+	width: 10%;
+}
+
+.list-res thead tr th:nth-child(8),
+.list-res tbody tr td:nth-child(8) {
+	width: 10%;
+}
+
+.list-res tbody tr td:nth-child(1),
+.list-res tbody tr td:nth-child(4) {
+	letter-spacing: -1px;
+}

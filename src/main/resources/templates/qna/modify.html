@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<th:block th:replace="~{ /layout/basic :: setContent(~{this::content})}"> <!-- 파라미터로 조각코드 받기 -->
+
+   <th:block th:fragment="content">
+   
+      <div class="content-header">
+         <div class="cormorant-font">Q&A</div>
+         <p class="p_text_deco">질문과 답변</p>
+      </div>
+      
+      <form id="qnaForm">
+        
+      <div class="form-group">
+         <label for="writer">작성자</label>
+         <input type="text" id="writer" name="writer" th:value="${dto.member.name}" readonly>
+      </div>
+         
+      <div class="form-group">
+         <label for="title">제목</label>
+         <input type="text" id="title" name="title" th:value="${dto.title}" required>
+         <input type="checkbox" id="private" name="private">
+         <label for="private">비공개</label>
+      </div>
+      
+        <div class="form-group">
+            <label>내용</label>
+            <textarea class="form-control" rows="5" name="content">[[${dto.content}]]</textarea>
+        </div>
+         
+      <div class="form-group">
+         <label for="password">비밀번호</label>
+         <input type="password" id="password" name="password">
+      </div>
+      
+        <input type="hidden" id="no" name="no" th:value="${dto.no}" />
+        
+        <button type="button" class="btn btn-primary modifyBtn">수정</button>
+
+        <button type="button" class="btn btn-info listBtn">목록으로</button>
+
+        <button type="button" class="btn btn-danger removeBtn">삭제</button>
+        
+        </form>
+        
+
+        <script th:inline="javascript">
+
+            //$() 함수: CSS선택자로 HTML 태그를 가져온다
+           var form = $("form"); //form 태그 객체 가져오기
+
+            //click() 메소드 : 수정버튼을 클릭하면 특정코드를 수행한다
+            //confirm() 메소드: 수정여부를 확인하는 창을 띄운다.
+            //[확인]을 클릭하면, 서버에 게시물 수정을 요청한다.
+            //[취소]를 선택하면 이벤트를 종료한다.
+            $(".modifyBtn").click(function() {
+               var no = $("#no").val();
+                if(!confirm("수정하시겠습니까?")){
+                    return ;
+                }
+
+                //form~attr~submit: 서버에 게시물 수정 요청
+                //폼태그는 PUT방식을 사용할 수 없으므로, POST방식으로 처리
+                form
+                    .attr("action", "/qna/modify")
+                    .attr("method","post")
+                    .submit();
+            });
+
+            $(".listBtn").click(function() {
+                form
+                    .attr("action", "/qna/list")
+                    .attr("method","get")
+                    .submit();
+            })
+
+            $(".removeBtn").click(function(){
+               var no = $("#no").val();
+               if(!confirm("삭제하시겠습니까?")){
+                    return ;
+                }
+               $("form")
+                    .attr("action", "/qna/remove")
+                    .attr("method","post")
+                    .submit();
+            });
+
+        </script>
+   
+   </th:block>
+
+</th:block>
+
+
+
+
+
+
